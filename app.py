@@ -1,8 +1,12 @@
-from sqlite3 import Cursor
-
-from database import create_table, get_entries
+from database import create_table
 from menu import ACTIONS
-from view import display_greeting, display_menu, prompt_new_entry, view_entries
+from view import (
+    display_greeting,
+    display_invalid_option_message,
+    display_menu,
+    prompt_new_entry,
+    view_entries,
+)
 
 
 display_greeting()
@@ -14,7 +18,6 @@ while (user_input := display_menu()) != ACTIONS["EXIT"]:
     if user_input == ACTIONS["ADD_ENTRY"]:
         prompt_new_entry()
     elif user_input == ACTIONS["VIEW_ENTRIES"]:
-        cursor: Cursor = get_entries()
-        view_entries(cursor)
+        view_entries()
     else:
-        print("\nUser entered an invalid option >:(\n")
+        display_invalid_option_message()
