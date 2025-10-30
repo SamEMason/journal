@@ -2,6 +2,7 @@ from datetime import datetime
 from sqlite3 import Cursor
 
 from database import add_entry
+from menu import MENU
 
 
 def display_greeting():
@@ -10,14 +11,7 @@ def display_greeting():
 
 
 def display_menu():
-    menu = """Please select one of the following options:
-1) Add new entry for today.
-2) View entries.
-3) Exit.
-
-Your selection: """
-
-    return input(menu)
+    return input(MENU)
 
 
 def prompt_new_entry():
